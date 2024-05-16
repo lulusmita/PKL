@@ -19,7 +19,7 @@ Ikuti langkah-langkah ini untuk menyiapkan dan menjalankan proyek secara lokal:
 1. Klon repositori:
 
     ```bash
-    git clone https://github.com/PKL-TELKOM-Web-Development-Reporting/Tsel_Inventory.git
+    git clone https://github.com/lulusmita/Research.git
     ```
 
 2. Pindah ke direktori proyek:
