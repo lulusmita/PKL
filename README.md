@@ -25,7 +25,7 @@ Ikuti langkah-langkah ini untuk menyiapkan dan menjalankan proyek secara lokal:
 2. Pindah ke direktori proyek:
 
     ```bash
-    cd Tsel_Inventory
+    cd Research
     ```
 
 3. Salin file `.env.example` untuk membuat file `.env` baru:
