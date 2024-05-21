@@ -7,7 +7,7 @@
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                        Tambah New Link
+                        Add New Link
                     </h3>
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="tambahNewLinkModal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -37,7 +37,7 @@
                             <input type="text" name="Site_ID" id="Site_ID" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required="">
                         </div>
                         <div class="col-span-4 sm:col-span-1">
-                            <label for="Jumlah_NE" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah NE</label>
+                            <label for="Jumlah_NE" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of NE</label>
                             <input type="number" name="Jumlah_NE" id="Jumlah_NE" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required="">
                         </div>
                         <div class="col-span-3 sm:col-span-1">
@@ -101,15 +101,8 @@
                             <label for="Detail_Program" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Detail Program</label>
                             <textarea id="Detail_Program" name="Detail_Program" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Isi detail program..."></textarea>
                         </div>
-                        <div class="col-span-4 sm:col-span-2">
-                            <label for="Status_Final" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status Final</label>
-                            <select id="Status_Final" name="Status_Final" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option value="Open">Open</option>
-                                <option value="Closed">Closed</option>
-                            </select>
-                        </div>
-                        <div class="col-span-8 md:col-span-8">
-                            <label for="KET" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
+                        <div class="col-span-12 md:col-span-10">
+                            <label for="KET" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                             <input type="text" name="KET" id="KET" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required="">
                         </div>
                     </div>

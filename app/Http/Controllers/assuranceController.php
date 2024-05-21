@@ -36,7 +36,7 @@ class assuranceController extends Controller
             ->whereIn('daily_report_ava_tsels.witel_id', $witelIds)
             ->pluck('availability', 'witel');
         $startChart = 95;
-        $judulChart = 'Availability tiap witel';
+        $judulChart = 'Availability for each witel';
 
         if ($searchCount == 0) {
             // Data tidak ditemukan, kirim pesan yang sesuai

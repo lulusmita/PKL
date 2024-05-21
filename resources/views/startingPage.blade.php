@@ -69,15 +69,15 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 p-4 gap-4">
         <a class="p-6 text-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Assurance</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">Tindakan perbaikan dilaksanakan berdasarkan pesanan tiket gangguan OLO & Tsel, untuk memastikan kualitas layanan yang optimal.</p>
+            <p class="font-normal text-gray-700 dark:text-gray-400">Corrective actions are carried out based on OLO & Tsel trouble ticket orders to ensure optimal service quality.</p>
         </a>
         <a class="p-6 text-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Fullfilment</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">Fulfillment Telkomsel melibatkan new link, rebalancing, dismantling, dan quality, sementara Fulfillment OLO mencakup new install, modify, disconnect, dan suspend-resume.</p>
+            <p class="font-normal text-gray-700 dark:text-gray-400">Telkomsel fulfillment involves new link installations, rebalancing, dismantling, and quality assurance, while OLO fulfillment includes new installations, modifications, disconnections, and suspend-resume actions.</p>
         </a>
         <a class="p-6 text-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Quality Management</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">Perbaikan latency, packet loss & Jitter berdasarkan laporan gangguan quality dan hasil ukur TWAMP & Tutela.</p>
+            <p class="font-normal text-gray-700 dark:text-gray-400">Latency, packet loss, and jitter improvements are based on quality issue reports and measurements from TWAMP and Tutela.</p>
         </a>
     </div>
 </body>

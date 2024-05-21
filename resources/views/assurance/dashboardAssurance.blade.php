@@ -23,7 +23,7 @@
                     </div>
                     <div class="ml-2">
                         <p class="text-xl font-bold text-hitam dark:text-white">{{  $totalTiket }}</p>
-                        <p class="md:text-sm text-xs font-medium text-hitam dark:text-white">Total Tiket</p>
+                        <p class="md:text-sm text-xs font-medium text-hitam dark:text-white">Total Tickets</p>
                     </div>
                 </div>
 
@@ -46,7 +46,7 @@
                     </div>
                     <div class="ml-2">
                         <p class="text-xl font-bold text-hitam dark:text-white">{{  $totalDistinctSite }}</p>
-                        <p class="md:text-sm text-xs font-medium text-hitam dark:text-white">Distinch Site</p>
+                        <p class="md:text-sm text-xs font-medium text-hitam dark:text-white">Distinct Site</p>
                     </div>
                 </div>
                 <div class="flex p-4 items-center justify-center h-16 md:h-24 rounded bg-putih shadow-lg dark:bg-gray-800">
@@ -79,7 +79,7 @@
                     </div>
                     <div class="ml-2">
                         <p class="text-xl font-bold text-hitam dark:text-white">{{ $averageAvailability }}%</p>
-                        <p class="md:text-sm text-xs font-medium text-hitam dark:text-white">Avalaibality</p>
+                        <p class="md:text-sm text-xs font-medium text-hitam dark:text-white">Availability</p>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                                         </svg>
                                     </div>
                                     <div class="ml-2">
-                                        <p id="witel" class="text-xl font-bold text-hitam dark:text-white">Pilih Area</p>
+                                        <p id="witel" class="text-xl font-bold text-hitam dark:text-white">Select Area</p>
                                         <p class="text-sm font-medium text-hitam dark:text-white">WITEL</p>
                                     </div>
                                 </div>
@@ -120,7 +120,7 @@
                                     </div>
                                     <div class="ml-2">
                                         <p id="kolom3" class="text-xl font-bold text-hitam dark:text-white">-</p>
-                                        <p class="text-sm font-medium text-hitam dark:text-white">Distinch Site</p>
+                                        <p class="text-sm font-medium text-hitam dark:text-white">Distinct Site</p>
                                     </div>
                                 </div>
                             </div>
@@ -138,7 +138,7 @@
             <div class=" relative overflow-x-auto px-2 items-center justify-center rounded bg-putih dark:bg-gray-800">
                 <div class="grid sm:p-2">
                     <div class="bg-gray-50 rounded h-10 flex items-center justify-center mb-2">
-                        <p id="witel" class="text-xl font-bold text-hitam dark:text-white">Tiket Menonjol</p>
+                        <p id="witel" class="text-xl font-bold text-hitam dark:text-white">Highlighted Tickets</p>
                     </div>
                     <div class=" rounded  justify-center h-max">
                         @include('components.alerts')

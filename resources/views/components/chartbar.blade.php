@@ -8,7 +8,7 @@
 
     var options = {
         series: [{
-            name: 'Presentase',
+            name: 'Percentage',
             data: Object.values(Data),
     }],
         chart: {

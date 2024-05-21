@@ -28,13 +28,13 @@
                         Witel
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Tanggal Open
+                        Open Date
                     </th>
                     <th scope="col" class="px-6 py-3">
                         MTTR
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        JUMLAH SITE
+                        Sites
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Root Cause
