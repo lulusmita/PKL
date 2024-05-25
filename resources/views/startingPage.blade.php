@@ -64,7 +64,7 @@
             @include('components.login')
         </div>
     </div>
-    @include('components.alerts')
+    {{--@include('components.alerts')--}}
     <h1 class="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center justify-center"><span class="underline underline-offset-3 decoration-8 decoration-merah">Service</span></h1>
     <div class="grid grid-cols-1 lg:grid-cols-3 p-4 gap-4">
         <a class="p-6 text-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">

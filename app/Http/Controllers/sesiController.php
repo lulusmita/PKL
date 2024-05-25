@@ -17,8 +17,8 @@ class sesiController extends Controller
     function login(Request $request)
     {
         $request->validate([
-            'email' => 'required',
-            'password' => 'required'
+            'email' => 'required|email',
+            'password' => 'required|min:8|max:16',
         ]);
 
 
@@ -30,7 +30,7 @@ class sesiController extends Controller
         if (Auth::attempt($infologin)) {
             return redirect('dashboard');
         } else {
-            return redirect('')->withInput();
+            return redirect()->back()->withErrors(['login' => 'Login failed']);
         }
     }
 
