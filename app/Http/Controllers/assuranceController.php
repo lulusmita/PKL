@@ -20,7 +20,12 @@ class assuranceController extends Controller
 
 
         if ($request->has('search')) {
-            $tikets = Tiket::where('tiket_id', 'like', '%' . $request->search . '%')->paginate(5);
+            $searchTerm = $request->search;
+            $tikets = Tiket::where('tiket_id', 'like', '%' . $searchTerm . '%')
+                           ->orWhereHas('report', function ($query) use ($searchTerm) {
+                                $query->where('witel', 'like', '%' . $searchTerm . '%');
+                           })
+                           ->paginate(5);
             $searchCount = $tikets->total();
         } else {
             $tikets = Tiket::paginate(5);
