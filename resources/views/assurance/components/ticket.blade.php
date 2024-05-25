@@ -87,7 +87,7 @@
                                 {{ $tiket->report->witel }}
                             </span>
                             <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
-                               Jumlah Site : {{ $tiket->jml_site }}
+                                Number of Sites : {{ $tiket->jml_site }}
                             </span>
                             <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
                                 <svg class="w-2 h-2 me-1  bg-putih text-merah dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -101,7 +101,7 @@
                                     <svg class="w-2 h-2 me-1  bg-putih text-merah dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                         <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 6v4l3.276 3.276M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                                     </svg>
-                                {{ $tiket->mttr }} Jam
+                                    {{ $tiket->mttr }} {{ $tiket->mttr <= 1 ? 'hour' : 'hours' }}
                             </span>
                         </div> 
                     </div>

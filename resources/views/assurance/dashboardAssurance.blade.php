@@ -226,7 +226,7 @@ document.querySelectorAll(".allPaths").forEach(e => {
         document.getElementById("SiteDownValue").innerText = witelDataItem ? witelDataItem.site_down : 'N/A';
         document.getElementById("DisctinctSiteValue").innerText = witelDataItem ? witelDataItem.distinct_site : 'N/A';
         document.getElementById("TiketValue").innerText = witelDataItem ? witelDataItem.jml_tiket : 'N/A';
-        document.getElementById("MTTRValue").innerText = witelDataItem ? witelDataItem.mttr+' Jam' : 'N/A';
+        document.getElementById("MTTRValue").innerText = witelDataItem ? witelDataItem.mttr + (witelDataItem.mttr <= 1 ? ' hour' : ' hours') : 'N/A';
         document.getElementById("BillValue").innerText = witelDataItem ? witelDataItem.site_bill : 'N/A';
         document.getElementById("AvailValue").innerText = witelDataItem ? witelDataItem.availability+' %' : 'N/A';
 
