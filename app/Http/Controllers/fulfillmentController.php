@@ -78,7 +78,7 @@ class fulfillmentController extends Controller
     public function rebalancing(Request $request)
     {
         if ($request->has('search')) {
-            $dataRebalancing = rebalancingNewLink::where('SITE_ID', 'like', '%' . $request->search . '%')->orWhere('Status', 'like', '%' . $request->search . '%')->paginate(10);
+            $dataRebalancing = rebalancingNewLink::where('Site_ID', 'like', '%' . $request->search . '%')->orWhere('Status', 'like', '%' . $request->search . '%')->paginate(10);
             $searchCount = $dataRebalancing->total();
         } else {
             $dataRebalancing = rebalancingNewLink::paginate(10);
@@ -88,7 +88,7 @@ class fulfillmentController extends Controller
         if ($searchCount == 0) {
             // Data tidak ditemukan, kirim pesan yang sesuai
             // return redirect()->route('rebalancing')->with('errors', 'Data tidak ditemukan');
-            return view('fulfillment.rebalancing', compact('dataRebalancing'))->with('errors', 'Data tidak ditemukan');
+            return view('fulfillment.rebalancing', compact('dataRebalancing'))->with('errors', 'Data not found');
         }
 
         return view('fulfillment.rebalancing', compact('dataRebalancing'));
@@ -98,7 +98,7 @@ class fulfillmentController extends Controller
     {
         $data = rebalancingNewLink::find($Rebalancing_ID);
         $data->update($request->all());
-        return redirect()->route('rebalancing')->with('success', 'Status Rebalancing Berhasil Diupdate');
+        return redirect()->route('rebalancing')->with('success', 'Rebalancing status successfully updated');
     }
 
     public function deleterebalance($id)
@@ -106,49 +106,74 @@ class fulfillmentController extends Controller
         $data = rebalancingNewLink::find($id);
         $data->delete();
 
-        return redirect()->route('rebalancing')->with('errors', 'Data Berhasil Terhapus');
+        return redirect()->route('rebalancing')->with('errors', 'Data successfully deleted');
     }
 
-    function insertNewLink(Request $request)
+    public function insertNewLink(Request $request)
     {
-        $request->merge(['inserted_by' => auth()->user()->id]);
-        // Bagian kode Anda untuk memasukkan tautan baru
 
-        // Mendapatkan user_id dari pengguna yang saat ini masuk
-        $userId = Auth::user()->id;
-        // Simpan data ke tabel newLinkFulfillment
-        $newLinkFulfillment = newLinkFulfillment::create($request->all());
+    $validatedData = $request->validate([
+        'Nd_Nim_No' => 'required|string|max:30',  
+        'ID_Tiara_Enom' => 'required|size:6,unique:new_link_fulfillments,ID_Tiara_Enom',      
+        'Site_ID' => 'required|size:6',  
+        'Start_Target_Date' => 'required',
+        'Target_Date' => 'required',
+        'Detail_Program' => 'required',
+    ]);
 
-        // Ambil nilai Uniq_No dari newLinkFulfillment
-        $uniqNo = $newLinkFulfillment->Uniq_No;
-        $siteID = $newLinkFulfillment->Site_ID;
+    $request->merge(['inserted_by' => auth()->user()->id]);
 
-        // Tambahkan data ke tabel ConfigurationNewLink sebagai last updated juga
-        ConfigurationNewLink::create([
-            'Configuration_ID' => $uniqNo,
-            'user_id' => $userId,
-            'Site_ID' => $siteID
-        ]);
+    $userId = Auth::user()->id;
 
-        return redirect()->route('newLink')->with('success', 'New Link Berhasil Ditambahkan');
+    $newLinkFulfillment = newLinkFulfillment::create($request->all());
+
+    $uniqNo = $newLinkFulfillment->Uniq_No;
+    $siteID = $newLinkFulfillment->Site_ID;
+
+    ConfigurationNewLink::create([
+        'Configuration_ID' => $uniqNo,
+        'user_id' => $userId,
+        'Site_ID' => $siteID
+    ]);
+
+    return redirect()->route('newLink')->with('success', 'New Link successfully added');
     }
 
     public function updateNewLink(Request $request, $Uniq_No)
     {
+        $validatedData = $request->validate([
+            'Nd_Nim_No' => 'required|string|max:30',  
+            'ID_Tiara_Enom' => 'required|size:6,unique:new_link_fulfillments,ID_Tiara_Enom',      
+            'Site_ID' => 'required|size:6',  
+            'Start_Target_Date' => 'required',
+            'Target_Date' => 'required',
+            'Detail_Program' => 'required',
+        ]);
+
         $data = newLinkFulfillment::find($Uniq_No);
         $data->update($request->all());
-        return redirect()->route('newLink')->with('success', 'New Link Berhasil Diupdate');
+        return redirect()->route('newLink')->with('success', 'New Link successfully updated');
     }
 
     public function deleteNewlink($id)
     {
         $data = newLinkFulfillment::find($id);
-        $dataKonfigurasi = ConfigurationNewLink::find($id);
+        $dataRebalancing = ConfigurationNewLink::find($id);
+        $dataKonfigurasi = rebalancingNewLink::find($id);
         // dd($data->	ID_Tiara_Enom);
-        $dataKonfigurasi->delete();
-        $data->delete();
+        if ($dataRebalancing !== null) {
+            $dataRebalancing->delete();
+        }
+        
+        if ($dataKonfigurasi !== null) {
+            $dataKonfigurasi->delete();
+        }
+        
+        if ($data !== null) {
+            $data->delete();
+        }
 
-        return redirect()->route('newLink')->with('errors', 'Data Berhasil Terhapus');
+        return redirect()->route('newLink')->with('success', 'Data successfully deleted');
     }
 
     public function exportExcelNewlink()
@@ -158,15 +183,19 @@ class fulfillmentController extends Controller
 
     public function importExcelNewlink(Request $request)
     {
-        $data = $request->file('file');
-        $namafile = $data->getClientOriginalName();
-        $data->move('newLinkFulfillment', $namafile);
-
-
-        $result = Excel::import(new importExcelNewlink, \public_path('/newLinkFulfillment/' . $namafile));
-
-
-        return redirect()->back()->with('success', 'Data New Link Berhasil diimport');
+        try{
+            $request->validate([
+                'file' => 'required|mimes:csv,xlsx'
+            ]);
+    
+            $data = $request->file('file');
+            $namafile = $data->getClientOriginalName();
+            $data->move('newLinkFulfillment', $namafile);
+            Excel::import(new importExcelNewlink, public_path('/newLinkFulfillment/' . $namafile));
+            return redirect()->back()->with('success', 'New Link Data Imported Successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('errors', 'Failed to import data');
+        }
     }
 
     function configurationlink(Request $request, $Configuration_ID)
@@ -206,12 +235,15 @@ class fulfillmentController extends Controller
         );
 
         // Redirect dengan pesan sukses
-        return redirect()->route('newLink')->with('success', 'Konfigurasi Berhasil Diupdate');
+        return redirect()->route('newLink')->with('success', 'Configuration successfully updated');
     }
 
     public function importExcelRebalancing(Request $request)
     {
         try {
+            $request->validate([
+                'file' => 'required|mimes:csv,xlsx'
+            ]);
             $data = $request->file('file');
             $namafile = $data->getClientOriginalName();
             $data->move('rebalancingFulfillment', $namafile);
@@ -220,7 +252,7 @@ class fulfillmentController extends Controller
             $result = Excel::import(new importExcelRebalancing, \public_path('/rebalancingFulfillment/' . $namafile));
 
 
-            return redirect()->back()->with('success', 'Data Rebalancing Berhasil diimport');
+            return redirect()->back()->with('success', 'Rebalancing data successfully imported.');
         } catch (\Exception $e) {
             // Log the exception to see the details
 

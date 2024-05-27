@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         config(['app.local' => 'id']);
-        Carbon::setLocale('id');
+        Carbon::setLocale('en');
         Paginator::defaultView('pagination::default');
     }
 }

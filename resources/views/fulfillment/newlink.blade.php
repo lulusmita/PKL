@@ -41,9 +41,8 @@
                 </li>
                 </ol>
             </nav>
-      
             @include('components.alerts')
-            
+
             <div class="relative overflow-x-auto px-2">
                 <div class="flex w-full items-center justify-between xl:flex-row flex-col space-y-4 xl:space-y-0 py-4 bg-white dark:bg-gray-900">
                     <div class="flex gap-2">

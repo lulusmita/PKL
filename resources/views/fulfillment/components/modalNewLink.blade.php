@@ -154,7 +154,7 @@
                             <input value="{{ $row->ID_Tiara_Enom }}" type="number" name="ID_Tiara_Enom" id="ID_Tiara_Enom" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required="">
                         </div>
                         <div class="col-span-4 sm:col-span-1">
-                            <label for="Jumlah_NE" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah NE</label>
+                            <label for="Jumlah_NE" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of NE</label>
                             <input value="{{ $row->Jumlah_NE }}" type="number" name="Jumlah_NE" id="Jumlah_NE" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required="">
                         </div>
                         <div class="col-span-3 sm:col-span-1">
@@ -221,16 +221,8 @@
                             <label for="Detail_Program" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Detail Program</label>
                             <textarea id="Detail_Program" name="Detail_Program" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Isi detail program...">{{ $row->Detail_Program }}</textarea>
                         </div>
-                        <div class="col-span-4 sm:col-span-2">
-                            <label for="Status_Final" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status Final</label>
-                            <select id="Status_Final" name="Status_Final" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option selected>{{ $row->Status_Final }}</option>
-                                <option value="Open">Open</option>
-                                <option value="Closed">Closed</option>
-                            </select>
-                        </div>
-                        <div class="col-span-8 md:col-span-8">
-                            <label for="KET" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
+                        <div class="col-span-12 md:col-span-8">
+                            <label for="KET" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                             <input value="{{ $row->KET }}" type="text" name="KET" id="KET" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required="">
                         </div>
                     </div>
@@ -238,12 +230,6 @@
                 <!-- Modal footer -->
                 <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
                     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update Data</button>
-                    <button data-modal-hide="updateNewLink{{ $row->Uniq_No }}" data-modal-target="congirutationNewLink{{ $row->Uniq_No }}" data-modal-show="congirutationNewLink{{ $row->Uniq_No }}"  type="button" class=" bg-merah text-merah border border-merah hover:bg-abu-abu hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center ">
-                        <svg class="w-5 h-5 text-putih dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M10.8 5a3 3 0 0 0-5.6 0H4a1 1 0 1 0 0 2h1.2a3 3 0 0 0 5.6 0H20a1 1 0 1 0 0-2h-9.2ZM4 11h9.2a3 3 0 0 1 5.6 0H20a1 1 0 1 1 0 2h-1.2a3 3 0 0 1-5.6 0H4a1 1 0 1 1 0-2Zm1.2 6H4a1 1 0 1 0 0 2h1.2a3 3 0 0 0 5.6 0H20a1 1 0 1 0 0-2h-9.2a3 3 0 0 0-5.6 0Z"/>
-                        </svg>                          
-                        <span class="sr-only">Konfigurasi</span>
-                    </button>
                     <button data-modal-hide="updateNewLink{{ $row->Uniq_No }}" data-modal-target="deleteNewLink{{ $row->Uniq_No }}" data-modal-toggle="deleteNewLink{{ $row->Uniq_No }}" type="button" class="md:hidden bg-merah text-merah border border-merah hover:bg-abu-abu hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2">
                         <svg class="w-5 h-5 text-putih dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                             <path fill-rule="evenodd" d="M8.6 2.6A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4c0-.5.2-1 .6-1.4ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
@@ -295,7 +281,7 @@
                             <input value="{{ $row->Site_ID }}" type="text" name="Site_ID" id="Site_ID" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" disabled>
                         </div>
                         <div class="col-span-6 sm:col-span-1">
-                            <label for="Jumlah_NE" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah NE</label>
+                            <label for="Jumlah_NE" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of NE</label>
                             <input value="{{ $row->Jumlah_NE }}" type="number" name="Jumlah_NE" id="Jumlah_NE" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" disabled>
                         </div>
                         <div class="col-span-6 sm:col-span-1">
@@ -371,7 +357,7 @@
                             </select>
                         </div>
                         <div class="col-span-6 md:col-span-8">
-                            <label for="KET" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
+                            <label for="KET" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                             <input disabled value="{{ $row->KET }}" type="text" name="KET" id="KET" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required="">
                         </div>
                     </div>
@@ -395,7 +381,7 @@
                     <svg class="mx-auto mb-4 text-merah w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                     </svg>
-                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Kamu yakin untuk menghapus progress new link dengan ID Tiara <span class="text-merah">{{ $row->ID_Tiara_Enom }}</span>?</h3>
+                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete the progress of new link with Tiara ID <span class="text-merah">{{ $row->ID_Tiara_Enom }}</span>?</h3>
                     <a href="/deleteNewlink/{{ $row->Uniq_No }}" data-modal-hide="deleteNewLink{{ $row->Uniq_No }}" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                         Ya
                     </a>
@@ -416,7 +402,7 @@
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                        Konfigurasi New Link {{ $konfigurasi->site_id }}
+                        New Link Configuration {{ $konfigurasi->site_id }}
                     </h3>
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="congirutationNewLink{{ $konfigurasi->Configuration_ID }}">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -456,7 +442,7 @@
                             <input value="{{ $konfigurasi->vlan }}" type="text" name="vlan" id="vlan" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" >
                         </div>
                         <div class="col-span-12 sm:col-span-12">
-                            <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ALAMAT</label>
+                            <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
                             <input value="{{ $konfigurasi->alamat }}" type="text" name="alamat" id="alamat" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" >
                         </div>
                         <div class="col-span-12 md:col-span-12 bg-slate-500 rounded-full flex justify-center">
@@ -500,7 +486,7 @@
                             <label for="olt_port_uplink" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PORT UPLINK</label>
                             <input value="{{ $konfigurasi->olt_port_uplink }}" type="text" name="olt_port_uplink" id="olt_port_uplink" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" >
                         </div>
-                        <div class="col-span-12 sm:col-span-1">
+                        <div class="col-span-12 sm:col-span-2">
                             <label for="olt_port_splitter" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PORT SPLITTER</label>
                             <input value="{{ $konfigurasi->olt_port_splitter }}" type="text" name="olt_port_splitter" id="olt_port_splitter" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" >
                         </div>
@@ -569,7 +555,7 @@
                             <label class="mx-auto text-center text-sm font-medium text-gray-50 dark:text-white">ADDITIONAL INFO</label>
                         </div>
                         <div class="col-span-12 md:col-span-12">
-                            <label for="ket" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">KETERANGAN</label>
+                            <label for="ket" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DESCRIPTION</label>
                             <input value="{{ $konfigurasi->ket }}" type="text" name="ket" id="ket" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" >
                         </div>
                         <div class="col-span-12 md:col-span-6">
