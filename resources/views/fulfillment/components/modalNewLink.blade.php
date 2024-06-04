@@ -221,7 +221,7 @@
                             <label for="Detail_Program" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Detail Program</label>
                             <textarea id="Detail_Program" name="Detail_Program" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Isi detail program...">{{ $row->Detail_Program }}</textarea>
                         </div>
-                        <div class="col-span-12 md:col-span-8">
+                        <div class="col-span-12 md:col-span-10">
                             <label for="KET" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                             <input value="{{ $row->KET }}" type="text" name="KET" id="KET" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required="">
                         </div>
@@ -230,6 +230,12 @@
                 <!-- Modal footer -->
                 <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
                     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update Data</button>
+                    <button data-modal-hide="updateNewLink{{ $row->Uniq_No }}" data-modal-target="congirutationNewLink{{ $row->Uniq_No }}" data-modal-show="congirutationNewLink{{ $row->Uniq_No }}" type="button" class="block md:hidden bg-merah text-merah border border-merah hover:bg-abu-abu hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center">
+                        <svg class="w-5 h-5 text-putih dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M10.8 5a3 3 0 0 0-5.6 0H4a1 1 0 1 0 0 2h1.2a3 3 0 0 0 5.6 0H20a1 1 0 1 0 0-2h-9.2ZM4 11h9.2a3 3 0 0 1 5.6 0H20a1 1 0 1 1 0 2h-1.2a3 3 0 0 1-5.6 0H4a1 1 0 1 1 0-2Zm1.2 6H4a1 1 0 1 0 0 2h1.2a3 3 0 0 0 5.6 0H20a1 1 0 1 0 0-2h-9.2a3 3 0 0 0-5.6 0Z"/>
+                        </svg>                          
+                        <span class="sr-only">Configuration</span>
+                    </button>
                     <button data-modal-hide="updateNewLink{{ $row->Uniq_No }}" data-modal-target="deleteNewLink{{ $row->Uniq_No }}" data-modal-toggle="deleteNewLink{{ $row->Uniq_No }}" type="button" class="md:hidden bg-merah text-merah border border-merah hover:bg-abu-abu hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2">
                         <svg class="w-5 h-5 text-putih dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                             <path fill-rule="evenodd" d="M8.6 2.6A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4c0-.5.2-1 .6-1.4ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
@@ -264,15 +270,15 @@
                 <!-- Modal body -->
                 <div class="p-6 space-y-6">
                     <div class="grid grid-cols-10 gap-3">
-                        <div class="col-span-6 md:col-span-3">
+                        <div class="col-span-12 md:col-span-3">
                             <label for="Nd_Nim_No" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nd Nim No</label>
                             <input value="{{ $row->Nd_Nim_No }}" type="text" name="Nd_Nim_No" id="Nd_Nim_No" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1701/TC.01/VS-01/XI/2023" disabled>
                         </div>
-                        <div class="col-span-6 md:col-span-2">
+                        <div class="col-span-4 md:col-span-2">
                             <label for="ID_Tiara_Enom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID Tiara Enom</label>
                             <input value="{{ $row->ID_Tiara_Enom }}" type="number" name="ID_Tiara_Enom" id="ID_Tiara_Enom" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" disabled>
                         </div>
-                        <div class="col-span-6 md:col-span-3">
+                        <div class="col-span-8 md:col-span-3">
                             <label for="SITE_NAME" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Site Name</label>
                             <input value="{{ $row->SITE_NAME }}" type="text" name="SITE_NAME" id="SITE_NAME" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" disabled>
                         </div>
@@ -284,11 +290,11 @@
                             <label for="Jumlah_NE" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of NE</label>
                             <input value="{{ $row->Jumlah_NE }}" type="number" name="Jumlah_NE" id="Jumlah_NE" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" disabled>
                         </div>
-                        <div class="col-span-6 sm:col-span-1">
+                        <div class="col-span-4 sm:col-span-1">
                             <label for="BW_Order" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bandwitch</label>
                             <input value="{{ $row->BW_Order }}" type="number" name="BW_Order" id="BW_Order" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" disabled>
                         </div>
-                        <div class="col-span-2 sm:col-span-2">
+                        <div class="col-span-8 sm:col-span-2">
                             <label for="witel_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Witel</label>
                             <select disabled id="witel_id" name="witel_id" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option value="{{ $row->witel_id }}" selected>{{ $row->witel->witel }}</option>
@@ -301,7 +307,7 @@
                                 <option value="7">Magelang</option>
                             </select>
                         </div>
-                        <div class="col-span-2 sm:col-span-1">
+                        <div class="col-span-6 sm:col-span-1">
                             <label for="Main_Program" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Main Program</label>
                             <select disabled id="Main_Program" name="Main_Program" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option selected>{{ $row->Main_Program }}</option>
@@ -309,7 +315,7 @@
                                 <option value="FIMO">FIMO</option>
                             </select>
                         </div>
-                        <div class="col-span-2 sm:col-span-1">
+                        <div class="col-span-6 sm:col-span-1">
                             <label for="Order_Batch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Order Batch</label>
                             <select disabled id="Order_Batch" name="Order_Batch" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 @php
@@ -344,11 +350,11 @@
                                 <input disabled value="{{ $row->Target_Date}}" datepicker datepicker-format="dd-mm-yyyy" type="text" name="Target_Date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
                             </div>
                         </div>
-                        <div class="col-span-6 sm:col-span-10">  
+                        <div class="col-span-12 sm:col-span-10">  
                             <label for="Detail_Program" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Detail Program</label>
                             <textarea disabled id="Detail_Program" name="Detail_Program" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Isi detail program...">{{ $row->Detail_Program }}</textarea>
                         </div>
-                        <div class="col-span-2 sm:col-span-2">
+                        <div class="col-span-4 sm:col-span-2">
                             <label for="Status_Final" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status Final</label>
                             <select disabled id="Status_Final" name="Status_Final" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option selected>{{ $row->Status_Final }}</option>
@@ -356,7 +362,7 @@
                                 <option value="Closed">Closed</option>
                             </select>
                         </div>
-                        <div class="col-span-6 md:col-span-8">
+                        <div class="col-span-8 md:col-span-8">
                             <label for="KET" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                             <input disabled value="{{ $row->KET }}" type="text" name="KET" id="KET" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required="">
                         </div>
@@ -419,11 +425,11 @@
                         </div>
                         <div class="col-span-4 md:col-span-3">
                             <label for="witel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Witel</label>
-                            <input value="{{ $konfigurasi->witel }}" type="text" name="witel" id="witel" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" >
+                            <input value="{{ $konfigurasi->witel }}" type="text" name="witel" id="witel" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" disabled>
                         </div>
                         <div class="col-span-4 md:col-span-2">
                             <label for="base_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Base ID</label>
-                            <input value="{{ $konfigurasi->base_id }}" type="text" name="base_id" id="base_id" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" >
+                            <input value="{{ $konfigurasi->base_id }}" type="text" name="base_id" id="base_id" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" disabled>
                         </div>
                         <div class="col-span-4 sm:col-span-2">
                             <label for="site_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Site ID</label>
@@ -431,7 +437,7 @@
                         </div>
                         <div class="col-span-12 md:col-span-3">
                             <label for="site_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Site Name</label>
-                            <input value="{{ $konfigurasi->site_name }}" type="text" name="site_name" id="site_name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" >
+                            <input value="{{ $konfigurasi->site_name }}" type="text" name="site_name" id="site_name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" disabled>
                         </div>
                         <div class="col-span-12 sm:col-span-1">
                             <label for="mac_address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">MAC ADDRESS NODEB</label>
@@ -561,7 +567,7 @@
                         <div class="col-span-12 md:col-span-6">
                             <label for="user_id " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ORDER INSERTED BY</label>
                             <div class="flex items-center">
-                                <img class="w-12 h-12 object-cover rounded-full" src="images/user/{{ $konfigurasi->newLinkFulfillment->user->foto }}" alt="{{ $konfigurasi->newLinkFulfillment->user->foto }}">
+                                <img class="w-12 h-12 object-cover rounded-full" src="images/user/{{ $konfigurasi->newLinkFulfillment->user->foto }}?? 'default.jpg" alt="{{ $konfigurasi->newLinkFulfillment->user->foto }}">
                                 <div class="ps-3">
                                     <div class="text-base font-semibold">{{ $konfigurasi->newLinkFulfillment->user->name }}</div>
                                     <div class="font-normal text-xs text-gray-500">{{ $konfigurasi->newLinkFulfillment->user->unit_kerja }}</div>
@@ -572,7 +578,7 @@
                         <div class="col-span-12 md:col-span-6">
                             <label for="user_id " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CONFIGURATION UPDATED BY</label>
                             <div class="flex items-center">
-                                <img class="w-12 h-12 object-cover rounded-full" src="images/user/{{ $konfigurasi->user->foto }}" alt="{{ $konfigurasi->user->foto }}">
+                                <img class="w-12 h-12 object-cover rounded-full" src="images/user/{{ $konfigurasi->user->foto ?? 'default.jpg' }}" alt="{{ $konfigurasi->user->foto }}">
                                 <div class="ps-3">
                                     <div class="text-base font-semibold">{{ $konfigurasi->user->name}}</div>
                                     <div class="font-normal text-xs text-gray-500">{{ $konfigurasi->user->unit_kerja }}</div>

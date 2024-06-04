@@ -106,7 +106,7 @@ class fulfillmentController extends Controller
         $data = rebalancingNewLink::find($id);
         $data->delete();
 
-        return redirect()->route('rebalancing')->with('errors', 'Data successfully deleted');
+        return redirect()->route('rebalancing')->with('success', 'Data successfully deleted');
     }
 
     public function insertNewLink(Request $request)
@@ -128,12 +128,17 @@ class fulfillmentController extends Controller
     $newLinkFulfillment = newLinkFulfillment::create($request->all());
 
     $uniqNo = $newLinkFulfillment->Uniq_No;
-    $siteID = $newLinkFulfillment->Site_ID;
+    $witel = $newLinkFulfillment->witel->witel;
+    $siteID = $newLinkFulfillment->Site_ID; 
+    $siteName = $newLinkFulfillment->SITE_NAME;
 
     ConfigurationNewLink::create([
         'Configuration_ID' => $uniqNo,
         'user_id' => $userId,
-        'Site_ID' => $siteID
+        'witel'=> $witel,
+        'base_id'=>$siteID,
+        'site_id' => $siteID,
+        'site_name'=> $siteName
     ]);
 
     return redirect()->route('newLink')->with('success', 'New Link successfully added');
@@ -152,6 +157,28 @@ class fulfillmentController extends Controller
 
         $data = newLinkFulfillment::find($Uniq_No);
         $data->update($request->all());
+
+        $witel = $data->witel->witel;
+
+        ConfigurationNewLink::updateOrInsert(
+            ['Configuration_ID' => $Uniq_No],
+            [
+                'user_id' => auth()->user()->id,
+                'witel' => $witel,
+                'base_id' => $data->Site_ID,
+                'site_id' => $data->Site_ID,
+                'site_name' => $data->SITE_NAME  
+            ]
+        );
+
+        if ($data->Status_Final === 'Closed') {
+            RebalancingNewLink::updateOrInsert(
+                ['Rebalancing_ID' => $data->Uniq_No],
+                [
+                    'Site_ID' => $data->Site_ID, 
+                ]
+            );
+        }
         return redirect()->route('newLink')->with('success', 'New Link successfully updated');
     }
 
@@ -217,11 +244,18 @@ class fulfillmentController extends Controller
         if ($isAllDataFilled) {
             // Memperbarui status di tabel newLinkFulfillment
             NewLinkFulfillment::where('Uniq_No', $Configuration_ID)->update(['Status_Final' => 'Closed']);
-            // Tambahkan data ke tabel rebalancingNewLink sebagai last updated juga
-            rebalancingNewLink::updateOrInsert([
-                'Rebalancing_ID' => $uniqNo,
-                'Site_ID' => $siteID
-            ]);
+            
+            $existingData = rebalancingNewLink::where('Rebalancing_ID', $uniqNo)->first();
+
+            // Jika data sudah ada, lakukan operasi update
+            if ($existingData) {
+                $existingData->Site_ID = $siteID;
+                $existingData->save();
+            } else {
+                // Jika data tidak ada, lakukan operasi insert
+                rebalancingNewLink::create(['Rebalancing_ID' => $uniqNo, 'Site_ID' => $siteID]);
+            }
+
         }
 
         $userId = Auth::user()->id;

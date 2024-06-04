@@ -81,13 +81,13 @@
                     </td>
                     <td class="px-6 py-4">
                         @if ($row->Status_Final == 'Open')
-                        <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
-                            <span class="w-2 h-2 me-1 bg-green-500 rounded-full"></span>
+                        <span class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+                            <span class="w-2 h-2 me-1 bg-red-500 rounded-full"></span>
                             {{ $row->Status_Final }}
                         </span>
                         @else
-                        <span class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
-                            <span class="w-2 h-2 me-1 bg-red-500 rounded-full"></span>
+                        <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
+                            <span class="w-2 h-2 me-1 bg-green-500 rounded-full"></span>
                             {{ $row->Status_Final }}
                         </span>
                         @endif
@@ -123,7 +123,11 @@
 
 {{-- Tampilan mobile --}}
 @foreach ($dataNewLinks as $index => $row)
+@if (Request::is('fulfillment*'))
+<div class="grid grid-cols-1 gap-4 md:hidden" data-modal-target="tampilNewLink{{ $row->Uniq_No }}" data-modal-show="tampilNewLink{{ $row->Uniq_No }}">
+@elseif (Request::is('newLink*'))
 <div class="grid grid-cols-1 gap-4 md:hidden" data-modal-target="updateNewLink{{ $row->Uniq_No }}" data-modal-show="updateNewLink{{ $row->Uniq_No }}">
+@endif
     <div class="bg-white mb-3 p-4 rounded-lg shadow">
         <div class="flex flex-wrap items-center space-x-2 text-sm">
             <div class="flex items-center">
@@ -137,13 +141,13 @@
                     {{ $row->Main_Program }}
                     </span>
                     @if ( $row->Status_Final == 'Open')
-                    <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
-                        <span class="w-2 h-2 me-1 bg-green-500 rounded-full"></span>
+                    <span class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+                        <span class="w-2 h-2 me-1 bg-red-500 rounded-full"></span>
                         {{ $row->Status_Final }}
                     </span>
                     @else
-                    <span class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
-                        <span class="w-2 h-2 me-1 bg-red-500 rounded-full"></span>
+                    <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
+                        <span class="w-2 h-2 me-1 bg-green-500 rounded-full"></span>
                         {{ $row->Status_Final }}
                     </span>
                     @endif

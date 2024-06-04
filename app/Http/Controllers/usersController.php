@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class usersController extends Controller
 {
@@ -20,7 +21,7 @@ class usersController extends Controller
 
         if ($searchCount == 0) {
             // Data tidak ditemukan, kirim pesan yang sesuai
-            return redirect()->route('users')->with('errors', "Data $request->search tidak ditemukan.");
+            return redirect()->route('users')->with('errors', "Data $request->search not found.");
         }
 
         return view('userManagement.userManagement', compact('users'));
@@ -30,6 +31,12 @@ class usersController extends Controller
     {
         $users = User::all();
         return view('profil', compact('users'));
+    }
+
+    function changepw()
+    {
+        $user = User::all();
+        return view('changepw', compact('user'));
     }
 
     public function updateProfil(Request $request, $id)
@@ -53,19 +60,41 @@ class usersController extends Controller
             $data->save();
         }
 
-        return redirect()->route('profil')->with('success', 'Profil Berhasil Diperbarui');
+        return redirect()->route('profil')->with('success', 'Profile successfully updated');
     }
 
     function insertUsers(Request $request)
     {
         // dd(request()->all());
-        $data = User::create($request->all());
-        if ($request->hasFile('foto')) {
-            $request->file('foto')->move('images/user', $request->file('foto')->getClientOriginalName());
-            $data->foto = $request->file('foto')->getClientOriginalName();
-            $data->save();
+        $request->validate([
+            'nik' => 'required|string|size:16|unique:users',
+            'name' => 'required|string|max:60',
+            'email' => 'required|string|email|max:255|unique:users',
+            'role' => 'required|in:MSO,Witel',
+        ]);
+
+        if ($request->role == 'MSO') {
+            $request->validate([
+                'unit_kerja' => 'required|string|in:Assurance,Fulfillment,Quality',
+            ]);
+        } elseif ($request->role == 'Witel') {
+            $request->validate([
+                'witel_id' => 'required|in:1,2,3,4,5,6,7',
+            ]);
         }
-        return redirect()->route('users')->with('success', 'User Berhasil Ditambahkan');
+
+        $data = User::create([
+            'nik' => $request->nik,
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
+            'witel_id' => $request->witel_id ?? null, 
+            'unit_kerja' => $request->unit_kerja ?? null,
+            'status' => 'Aktif',
+            'password' => Hash::make($request->nik), 
+        ]);
+        
+        return redirect()->route('users')->with('success', 'User successfully added');
     }
 
     public function updateUsers(Request $request, $id)
@@ -90,7 +119,7 @@ class usersController extends Controller
             $data->save();
         }
 
-        return redirect()->route('users')->with('success', 'User Berhasil Diedit');
+        return redirect()->route('users')->with('success', 'User successfully updated');
     }
 
     public function deleteUsers($id)
@@ -107,6 +136,6 @@ class usersController extends Controller
 
         $data->delete();
 
-        return redirect()->route('users')->with('errors', 'Data Berhasil Terhapus');
+        return redirect()->route('users')->with('success', 'Data successfully deleted');
     }
 }

@@ -51,8 +51,8 @@ class importExcelNewlink implements ToModel, WithCalculatedFormulas, WithUpserts
                 'BW_Order' => $row[10],
                 'Start_Target_Date' => $row[11],
                 'Target_Date' => $row[12],
-                'Status_Final' => $row[13],
-                'KET' => $row[14],
+                'Status_Final' => 'Open',
+                'KET' => $row[13],
                 'inserted_by' => $userId
             ]
         );
@@ -66,7 +66,10 @@ class importExcelNewlink implements ToModel, WithCalculatedFormulas, WithUpserts
             ['Configuration_ID' => $row[0]],
             [
                 'user_id' => $userId, // Tambahkan field lainnya jika diperlukan
-                'site_id' => $row[5]
+                'site_id' => $row[5],
+                'witel'=> $row[4],
+                'base_id'=>$row[5],
+                'site_name'=> $row[7]
             ]
         );
 

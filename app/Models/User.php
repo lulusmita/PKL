@@ -28,7 +28,7 @@ class User extends Authenticatable
         'role',
         'unit_kerja',
         'no_hp',
-        'witel',
+        'witel_id',
         'alamat',
         'prov',
         'kab',
@@ -57,4 +57,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function witel()
+    {
+        return $this->belongsTo(Witel::class);
+    }
+
+    public function isAdmin()
+    {
+    return $this->role === 'Admin';
+    }
+
 }

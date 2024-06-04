@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\fulfillmentController;
 use App\Http\Controllers\sesiController;
 use App\Http\Controllers\usersController;
+use App\Http\Controllers\PasswordController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,6 +50,8 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/profil', [usersController::class, 'profil'])->name('profil');
+    Route::get('/changepw', [usersController::class, 'changepw'])->name('changepw');
+    Route::post('/change-password/{id}', [PasswordController::class, 'changePassword'])->name('changePassword');
     Route::post('/updateProfil/{id}', [usersController::class, 'updateProfil']);
 
     Route::get('/users', [usersController::class, 'users'])->name('users')->middleware('userAkses:Admin');

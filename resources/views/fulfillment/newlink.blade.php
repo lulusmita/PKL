@@ -98,17 +98,19 @@
                                     <div class="p-4 md:p-5 text-center">
                                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
                                         <input type="file" name="file" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
-
-                                        <button type="sumbit" class="mt-4 inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                    
+                                        <p class="mt-2 text-sm text-gray-900 dark:text-gray">You can download the template via this <a href="{{ asset('templaten/NewLink.xlsx') }}" class="text-blue-600 dark:text-blue-400 underline">link</a></p>
+                    
+                                        <button type="submit" class="mt-4 inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
                                             <span class="sr-only">Import</span>
                                             Import                 
                                         </button>
-
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
+                    
                 
                     <label for="table-search" class="sr-only">Search</label>
                     <div class="relative flex flex-col w-full xl:w-auto">

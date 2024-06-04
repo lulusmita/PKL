@@ -14,7 +14,7 @@
     <div class="p-4 sm:ml-64">
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
             <div class="flex items-center h-48 rounded bg-gray-50 dark:bg-gray-800">
-                <img class="ml-6 rounded-full w-28 h-28 object-cover" src="images/user/{{ Auth::user()-> foto }}" alt="{{ Auth::user()-> foto }}">
+                <img class="ml-6 rounded-full w-28 h-28 object-cover" src="images/user/{{ Auth::user()-> foto ?? 'default.jpg' }}" alt="{{ Auth::user()-> foto }}">
                 <div class="p-4">
                     <h1 class="text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">{{ Auth::user()->name }}</h1>
                     <p class="text-lg font-normal text-gray-500 ">{{ Auth::user()->unit_kerja }}</p>
@@ -37,11 +37,11 @@
                             <input value="{{ Auth::user()->nik }}" type="text" name="nik" id="nik" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  disabled>
                         </div>
                         <div class="col-span-9 md:col-span-6">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                             <input value="{{ Auth::user()->name }}" type="text" name="name" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" disabled>
                         </div>
                         <div class="col-span-5 md:col-span-3">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unit Kerja</label>
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Working Unit</label>
                             <input value="{{ Auth::user()->unit_kerja }}" type="text" name="name" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" disabled>
                         </div>
                         <div class="col-span-4 md:col-span-3">
@@ -49,11 +49,11 @@
                             <input value="{{ Auth::user()->status }}" type="text" name="name" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" disabled>
                         </div>
                         <div class="col-span-9 md:col-span-3">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role Akun</label>
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Account Role</label>
                             <input value="{{ Auth::user()->role }}" type="text" name="name" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" disabled>
                         </div>
                     </div>
-                    <h1 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl dark:text-white">Kontak</h1>
+                    <h1 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl dark:text-white">Contact</h1>
                     <div class="grid grid-cols-8 gap-6">
                         <div class="col-span-8 sm:col-span-4">
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
@@ -78,7 +78,7 @@
                     <!-- Modal header -->
                     <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                         <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                            Update Profil
+                            Update Profile
                         </h3>
                     <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="editProfilModal{{ Auth::user()->id }}">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -92,11 +92,11 @@
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 md:col-span-3">
                                 <label for="nik" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK</label>
-                                <input value="{{ Auth::user()->nik }}" type="text" name="nik" id="nik" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="331012041840382492" required="">
+                                <input value="{{ Auth::user()->nik }}" type="text" name="nik" id="nik" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="331012041840382492" readonly>
                             </div>
                             <div class="col-span-6 md:col-span-3">
-                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
-                                <input value="{{ Auth::user()->name }}" type="text" name="name" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Aslam Thariq" required="">
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                                <input value="{{ Auth::user()->name }}" type="text" name="name" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Mita" required="">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
@@ -107,8 +107,8 @@
                                 <input value="{{Auth::user()->no_hp }}" type="number" name="no_hp" id="no_hp" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="e.g. 081325xxxxx" required="">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New Password</label>
-                                <input value="{{ Auth::user()->password }}" type="password" name="password" id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="••••••••" required="">
+                                <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+                                <input value="{{Auth::user()->alamat }}" type="text" name="alamat" id="alamat" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Jl Pahlawan No 10 Semarang" required="">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 
@@ -117,6 +117,7 @@
                                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
     
                             </div>
+                    
                         </div>
                     </div>
                     <!-- Modal footer -->

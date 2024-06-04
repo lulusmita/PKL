@@ -30,10 +30,10 @@
                         No
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Nama
+                        Name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Unit Kerja
+                        Working Unit
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Role
@@ -42,7 +42,7 @@
                         Status
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Aksi
+                        Action
                     </th>
                 </tr>
             </thead>
@@ -57,14 +57,20 @@
                                 {{ $index + $users->firstItem() }}
                             </td>
                             <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 object-cover rounded-full" src="images/user/{{ $user->foto }}" alt="{{ $user->foto }}">
+                                <img class="w-10 h-10 object-cover rounded-full" src="images/user/{{ $user->foto ?? 'default.jpg'}}" alt="{{ $user->foto }}">
                                 <div class="ps-3">
                                     <div class="text-base font-semibold">{{ $user->name }}</div>
                                     <div class="font-normal text-gray-500">{{ $user->email }}</div>
                                 </div>  
                             </th>
                             <td class="whitespace-nowrap px-6 py-4">
-                                {{ $user->unit_kerja }}
+                                @if($user->role == 'Witel')
+                                {{ $user->witel->witel }}
+                                @elseif($user->role == 'MSO')
+                                    {{ $user->unit_kerja }}
+                                @else
+                                    Admin
+                                @endif
                             </td>
                             <td class="whitespace-nowrap px-6 py-4">
                                 {{ $user->role }}
