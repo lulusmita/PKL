@@ -23,11 +23,12 @@ class fulfillmentController extends Controller
 
         $user = auth()->user();
 
-        if ($user->role == 'admin' || $user->role == 'MSO') {
+        if ($user->role == 'Admin' || $user->role == 'MSO') {
             $dataNewLinks = newLinkFulfillment::paginate(5);
         } else {
             $dataNewLinks = newLinkFulfillment::where('witel_id', $user->witel_id)->paginate(5);
         }
+        
         $totalUniqNo = newLinkFulfillment::count('Uniq_No');
         $totalOpenStatus = newLinkFulfillment::where('Status_Final', 'Open')->count();
         $totalClosedStatus = newLinkFulfillment::where('Status_Final', 'Closed')->count();
