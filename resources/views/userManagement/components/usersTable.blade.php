@@ -116,7 +116,7 @@
         <div class="bg-white mb-3 p-4 rounded-lg shadow">
             <div class="flex flex-wrap items-center space-x-2 text-sm">
                 <div class="flex items-center" >
-                    <img class="w-10 h-10 object-cover rounded-full" src="images/user/{{ $user->foto }}" alt="{{ $user->foto }}">
+                    <img class="w-10 h-10 object-cover rounded-full" src="images/user/{{ $user->foto ?? 'default.jpg' }}" alt="{{ $user->foto }}">
                     <div class="ps-3">
                         <div class="text-base font-semibold">{{ $user->name }}</div>
                         <div class="font-normal text-gray-500">{{ $user->email }}</div>

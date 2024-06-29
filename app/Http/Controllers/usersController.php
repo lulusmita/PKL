@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\newLinkFulfillment;
+use App\Models\ConfigurationNewLink;
 use Illuminate\Support\Facades\Hash;
 
 class usersController extends Controller
@@ -15,7 +17,9 @@ class usersController extends Controller
             $users = User::where('name', 'like', '%' . $request->search . '%')->orWhere('role', 'like', '%' . $request->search . '%')->paginate(10);
             $searchCount = $users->total();
         } else {
-            $users = User::paginate(10);
+            $users = User::where('role', '!=', 'Admin')
+             ->where('email', '!=', 'unknown@telkom.com')
+             ->paginate(10);
             $searchCount = $users->total();
         }
 
@@ -101,19 +105,25 @@ class usersController extends Controller
     {
         $data = User::find($id);
 
-        // Update data pengguna
-        $data->update($request->except('foto'));
+        $validatedData = $request->validate([
+            'password' => 'nullable|string|min:8|confirmed',
+            'foto' => 'image|mimes:svg,png,jpg,gif|max:2048', 
+        ]);
 
-        // Periksa apakah ada file foto yang dikirimkan
+    
+        $data->update($request->except(['foto','password','confirm_password']));
+
+        if ($request->filled('password')) {
+            $data->password = bcrypt($request->password);
+            $data->save();
+        }
+
         if ($request->hasFile('foto')) {
             $file = public_path('images/user/') . $data->foto;
-            // Cek jika ada gambar
             if (file_exists($file)) {
-                //maka hapus file yang ada di public
                 @unlink($file);
             }
 
-            // Pindahkan foto baru dan simpan nama file di database
             $request->file('foto')->move('images/user', $request->file('foto')->getClientOriginalName());
             $data->foto = $request->file('foto')->getClientOriginalName();
             $data->save();
@@ -121,6 +131,7 @@ class usersController extends Controller
 
         return redirect()->route('users')->with('success', 'User successfully updated');
     }
+
 
     public function deleteUsers($id)
     {
@@ -132,10 +143,21 @@ class usersController extends Controller
             @unlink($file);
         }
 
+        $newLinks = newLinkFulfillment::where('inserted_by', $id)->get();
+        foreach ($newLinks as $nlink) {
+            $nlink->inserted_by = 1; 
+            $nlink->save();
+        }
+
+        $configLinks = ConfigurationNewLink::where('user_id', $id)->get();
+        foreach ($configLinks as $link) {
+            $link->user_id = 1; 
+            $link->save();
+        }
 
 
         $data->delete();
 
-        return redirect()->route('users')->with('success', 'Data successfully deleted');
+        return redirect()->route('users')->with('success', 'User account successfully deleted');
     }
 }

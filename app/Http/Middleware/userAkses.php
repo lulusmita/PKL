@@ -24,11 +24,11 @@ class userAkses
                 return $next($request);
             } else {
                 // User has the wrong role
-                return redirect('profil')->with('errors', 'Anda tidak diizinkan');;
+                return redirect('profil')->with('errors', 'You are not allowed');;
             }
         } else {
             // User is not logged in or has an 'non-aktif' status
-            return redirect('profil')->with('errors', 'Anda sedang cuti dan tidak diizinkan untuk melakukan perubahan');
+            return redirect('profil')->with('errors', 'You are inactive and not allowed to make changes.');
         }
     }
 }

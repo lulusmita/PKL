@@ -15,60 +15,49 @@ class users_dummy_seeder extends Seeder
     {
         $userData = [
             [
-                'name' => 'Aslam Thariq',
-                'nik' => '12345678901230001',
+                'name' => 'Unknown User',
+                'nik' => '9999999999999999',
+                'email' => 'unknown@telkom.com',
+                'role' => 'MSO',
+                'unit_kerja' => 'Assurance',
+                'status' => 'aktif',
+                'foto' => '999unknown.jpg',
+                'password' => bcrypt('12345678')
+            ],
+            [
+                'name' => 'Lulus Dwiyan',
+                'nik' => '3316783452341212',
                 'email' => 'admin@telkom.com',
                 'role' => 'admin',
                 'unit_kerja' => 'Assurance',
                 'status' => 'aktif',
-                'foto' => 'aslam.jpeg',
-                'password' => bcrypt('123456'),
+                'foto' => 'lulus.jpg',
+                'password' => bcrypt('12345678'),
                 'no_hp' => '081325080083'
             ],
             [
-                'name' => 'Lulus Setiawan',
-                'nik' => '12345678901230002',
+                'name' => 'Aslam Thariq',
+                'nik' => '3316783452341211',
                 'email' => 'witel@telkom.com',
                 'role' => 'witel',
-                'unit_kerja' => 'Fulfillment',
+                'witel_id'=>6,
                 'status' => 'aktif',
-                'foto' => 'lulus.jpeg',
-                'password' => bcrypt('123456'),
+                'foto' => 'aslam.png',
+                'password' => bcrypt('12345678'),
                 'no_hp' => '081325080076'
             ],
             [
                 'name' => 'Dwi Agung',
-                'nik' => '12345678901230003',
+                'nik' => '3316783452341213',
                 'email' => 'MSO@telkom.com',
                 'role' => 'MSO',
                 'unit_kerja' => 'Quality',
                 'status' => 'aktif',
                 'foto' => 'dwi.jpg',
-                'password' => bcrypt('123456'),
+                'password' => bcrypt('12345678'),
                 'no_hp' => '081325080893'
             ]
         ];
-
-        $names = ['Jono joni', 'Diffa Nanda', 'Subagyono mwah', 'Sugiyatno', 'Sumarli', 'Edy Suyoso', 'Maspuah', 'Ezzat william', 'Tandur Pari', 'Sibal Sombil', 'Anam Anum', 'Lolas Lulus'];
-
-        foreach ($names as $name) {
-            $randomPhoto = ['aslam.jpeg', 'lulus.jpeg', 'dwi.jpg'][rand(0, 2)];
-            $randomRole = ['MSO', 'witel'][rand(0, 1)];
-            $randomUnit = ['Assurance', 'Quality', 'Fulfillment'][rand(0, 2)];
-            $randomStatus = ['Aktif', 'Cuti'][rand(0, 1)];
-
-            User::create([
-                'name' => $name,
-                'nik' => rand(1000000000000, 9999999999999),
-                'email' => strtolower(str_replace(' ', '', $name)) . '@telkom.com',
-                'role' => $randomRole,
-                'unit_kerja' => $randomUnit,
-                'status' =>  $randomStatus,
-                'foto' => $randomPhoto,
-                'password' => bcrypt('123456'),
-                'no_hp' => '0813' . rand(100000000, 999999999),
-            ]);
-        }
 
         foreach ($userData as $key => $val) {
             User::create($val);

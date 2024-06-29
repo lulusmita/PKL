@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-span-5 md:col-span-3">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Working Unit</label>
-                            <input value="{{ Auth::user()->unit_kerja }}" type="text" name="name" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" disabled>
+                            <input value="{{ Auth::user()->unit_kerja ?? 'Witel ' .Auth::user()->Witel->witel }}"  type="text" name="name" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" disabled>
                         </div>
                         <div class="col-span-4 md:col-span-3">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
@@ -92,7 +92,7 @@
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 md:col-span-3">
                                 <label for="nik" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK</label>
-                                <input value="{{ Auth::user()->nik }}" type="text" name="nik" id="nik" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="331012041840382492" readonly>
+                                <input value="{{ Auth::user()->nik }}" type="text" name="nik" id="nik" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="331012041840382492" @if(Auth::user()->role != 'Admin') readonly @endif>
                             </div>
                             <div class="col-span-6 md:col-span-3">
                                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
@@ -112,7 +112,7 @@
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 
-                                <label for="foto" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Ganti Foto</label>
+                                <label for="foto" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Change Photo</label>
                                 <input value="{{ Auth::user()->foto }}" name="foto" id="foto" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file">
                                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
     

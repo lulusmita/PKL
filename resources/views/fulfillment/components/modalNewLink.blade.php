@@ -567,7 +567,7 @@
                         <div class="col-span-12 md:col-span-6">
                             <label for="user_id " class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ORDER INSERTED BY</label>
                             <div class="flex items-center">
-                                <img class="w-12 h-12 object-cover rounded-full" src="images/user/{{ $konfigurasi->newLinkFulfillment->user->foto }}?? 'default.jpg" alt="{{ $konfigurasi->newLinkFulfillment->user->foto }}">
+                                <img class="w-12 h-12 object-cover rounded-full" src="images/user/{{ $konfigurasi->newLinkFulfillment->user->foto ?? 'default.jpg' }}" alt="{{ $konfigurasi->newLinkFulfillment->user->foto }}">
                                 <div class="ps-3">
                                     <div class="text-base font-semibold">{{ $konfigurasi->newLinkFulfillment->user->name }}</div>
                                     <div class="font-normal text-xs text-gray-500">{{ $konfigurasi->newLinkFulfillment->user->unit_kerja }}</div>

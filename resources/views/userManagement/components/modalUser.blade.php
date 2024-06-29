@@ -169,6 +169,25 @@
                                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
     
                             </div>
+                            <div class="col-span-6 flex items-center">
+                                <input id="change_password{{ $user->id }}" type="checkbox" class="mr-2" onclick="togglePasswordFields({{ $user->id }})">
+                                <label for="change_password{{ $user->id }}" class="text-sm font-medium text-gray-900 dark:text-white">Do you want to change password?</label>
+                            </div>
+
+                            <div id="passwordFields{{ $user->id }}" class="col-span-6 space-y-4" style="display: none;">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New Password</label>
+                                        <input type="password" name="password" id="password{{ $user->id }}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" disabled>
+                                    </div>
+                                    <div>
+                                        <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password</label>
+                                        <input type="password" name="password_confirmation" id="confirm_password{{ $user->id }}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
                             @endif
                         </div>
                     </div>
@@ -236,5 +255,49 @@
                 }
             });
         });
+
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('[id^=change_password]').forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    var userId = this.id.replace('change_password', '');
+                    togglePasswordFields(userId);
+                });
+            });
+        });
+
+        function togglePasswordFields(userId) {
+            var checkbox = document.getElementById('change_password' + userId);
+            var passwordFields = document.getElementById('passwordFields' + userId);
+            var passwordInput = document.getElementById('password' + userId);
+            var confirmPasswordInput = document.getElementById('confirm_password' + userId);
+
+            if (checkbox.checked) {
+                passwordFields.style.display = 'block';
+                passwordInput.disabled = false;
+                confirmPasswordInput.disabled = false;
+            } else {
+                passwordFields.style.display = 'none';
+                passwordInput.disabled = true;
+                confirmPasswordInput.disabled = true;
+            }
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
     

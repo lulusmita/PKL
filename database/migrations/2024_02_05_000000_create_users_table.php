@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('foto')->default('tamu.png');
+            $table->string('foto')->nullable();
             $table->string('nik')->unique();
-            $table->string('no_hp');
+            $table->string('no_hp')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -31,8 +31,8 @@ return new class extends Migration
             $table->foreign('kode_kec')->references('kode_kec')->on('kecs');
             $table->string('kode_kel')->nullable();
             $table->foreign('kode_kel')->references('kode_kel')->on('kels');
-            $table->enum('role', ['Admin', 'MSO', 'Witel'])->default('witel');
-            $table->enum('unit_kerja', ['Assurance', 'Fulfillment', 'Quality'])->default('Assurance');
+            $table->enum('role', ['Admin', 'MSO', 'Witel']);
+            $table->enum('unit_kerja', ['Assurance', 'Fulfillment', 'Quality'])->nullable();
             $table->enum('status', ['Aktif', 'Cuti'])->default('Aktif');
             $table->rememberToken();
             $table->timestamps();

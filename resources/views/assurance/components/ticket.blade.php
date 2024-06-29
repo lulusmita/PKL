@@ -10,7 +10,7 @@
                 </svg>
             </div>
             <form action="/dashboard" method="GET">
-                <input type="search" name="search" id="table-search-users" class="block pt-2 ps-10 text-sm h-9 text-gray-900 border border-gray-300 rounded-lg w-full xl:w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for Id Tiara Enom">
+                <input type="search" name="search" id="table-search-users" class="block pt-2 ps-10 text-sm h-9 text-gray-900 border border-gray-300 rounded-lg w-full xl:w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for Id Tickets">
             </form>
         </div>
     </div>
