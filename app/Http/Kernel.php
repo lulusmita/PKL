@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'userAkses' => \App\Http\Middleware\userAkses::class,
+        'check.reset.form' => \App\Http\Middleware\CheckResetFormSubmitted::class,
     ];
 }

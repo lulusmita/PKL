@@ -25,6 +25,9 @@ use Illuminate\Support\Facades\Auth;
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [sesiController::class, 'index'])->name('login');
     Route::post('/', [sesiController::class, 'login']);
+    Route::get('/adminresetpage', [sesiController::class, 'resetpw'])->name('adminpage');
+    Route::post('/adminresetpage', [sesiController::class,'sendResetLinkEmail'])->name('adminreset');
+    Route::post('/resetpass', [sesiController::class, 'reset']);
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -67,3 +70,7 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/home', function () {
     return redirect('/dashboard');
 });
+
+Route::get('/resetpass', function () {
+    return view('resetpass'); 
+})->name('resetpass')->middleware('check.reset.form');
