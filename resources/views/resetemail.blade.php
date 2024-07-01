@@ -1,66 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Reset</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        .email-container {
-            background-color: #ffffff;
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            border: 1px solid #dddddd;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .header {
-            text-align: center;
-            padding-bottom: 20px;
-        }
-        .header img {
-            max-width: 100px;
-        }
-        .content {
-            text-align: left;
-            color: #333333;
-        }
-        .token {
-            background-color: #f0f0f0;
-            padding: 10px;
-            border-radius: 4px;
-            display: inline-block;
-            font-size: 18px;
-            margin-top: 10px;
-        }
-        .footer {
-            text-align: center;
-            padding-top: 20px;
-            font-size: 12px;
-            color: #888888;
-        }
-    </style>
-</head>
-<body>
-    <div class="email-container">
-        <div class="text-center mt-2">
-            <p class="text-gray-600">We received a request to reset your password.</p>
-            <div class="bg-gray-200 rounded-lg p-3 inline-block mt-4">
-                <p class="text-gray-800 text-xl font-semibold">{{ $token }}</p>
-            </div>
-            <p class="text-gray-600 mt-4">If you did not request a password reset, please ignore this email.</p>
+<section class="max-w-2xl px-6 py-8 mx-auto bg-white dark:bg-gray-900">
+    @vite(['resources/css/app.css','resources/js/app.js'])
+    <header class="flex items-center p-4">
+        <a href="#" class="flex items-center space-x-2">
+            <img class="w-auto h-7 sm:h-8" src="{{ asset('images/telkom_ind.png') }}" alt="Telkom Indonesia Logo">
+            <p class="text-xl font-semibold">Telkom Indonesia</p>
+        </a>
+    </header>    
+
+    <main class="mt-8">
+        <h2 class="text-gray-700 dark:text-gray-200">Hi Admin MSO Tsel,</h2>
+
+        <p class="mt-2 leading-loose text-gray-600 dark:text-gray-300">
+            This is your verification code:
+        </p>
+
+        <div class="flex items-center mt-4 gap-x-4">
+            @foreach(str_split($token) as $char)
+                <p class="flex items-center justify-center w-10 h-10 text-2xl font-medium text-red-500 border border-red-500 rounded-md dark:border-red-400 dark:text-red-400">
+                    {{ $char }}
+                </p>
+            @endforeach
         </div>
 
-        <div class="footer">
-            <p>&copy; 2024 Telkom Indonesia. All rights reserved.</p>
-        </div>
-    </div>
-</body>
-</html>
+        <p class="mt-4 leading-loose text-gray-600 dark:text-gray-300">
+            This code will only be valid for the next 30 minutes. If the code does not work, you can request again the code.
+        </p>
+        <a href="{{ route('resetpass') }}" class="inline-block">
+            <button class="px-6 py-2 mt-6 text-sm font-medium tracking-wider text-white capitalize transition-colors duration-300 transform bg-red-600 rounded-lg hover:bg-red-500 focus:outline-none focus:ring focus:ring-red-300 focus:ring-opacity-80">
+                Reset Password
+            </button>
+        </a>
+        
+        <p class="mt-8 text-gray-600 dark:text-gray-300">
+            Thanks, <br>
+            Telkom Software Engineer Team
+        </p>
+    </main>
+    
+
+    <footer class="mt-8">
+        <p class="text-gray-500 dark:text-gray-400">
+            If you did not request a password reset, please ignore this email.
+        </p>
+
+        <p class="mt-3 text-gray-500 dark:text-gray-400">© 2024 Telkom Indonesia. All Rights Reserved.</p>
+    </footer>
+</section>
